@@ -25,6 +25,60 @@ $display: (
 
 @include display-modifiers;
 
+@include breakpoint-modifiers {
+  @each $key, $value in $display {
+    &--#{$key} {
+      display: #{$value};
+    }
+  }
+}
+
+/*
+Justify Content
+*/
+$justifyContent: (
+  start: flex-start,
+  center: center,
+  end: flex-end,
+  between: space-between,
+  around: space-around,
+);
+
+@mixin justifyContent-modifiers {
+  @each $key, $value in $justifyContent {
+    &-#{$key} {
+      justify-content: #{$value};
+    }
+  }
+}
+
+.justify {
+  @include justifyContcent-modifiers;
+}
+
+/*
+Align Items
+*/
+$alignItems: (
+  stretch: stretch,
+  start: flex-start,
+  center: center,
+  end: flex-end,
+  baseline: baseline,
+);
+
+@mixin alignItem-modifiers {
+  @each $key, $value in $alignItems {
+    &-#{$key} {
+      align-items: #{$value};
+    }
+  }
+}
+
+.items {
+  @include alignItem-modifiers;
+}
+
 /*
 Flex Direction
 */
@@ -53,8 +107,8 @@ $flex-direction: (
 }
 
 @include breakpoint-modifiers {
-    &--flex {
-        @include flexDirection-modifiers($reverse: false);
-        @include flexDirection-modifiers($reverse: true);
-    }
+  &--flex {
+    @include flexDirection-modifiers($reverse: false);
+    @include flexDirection-modifiers($reverse: true);
+  }
 }
